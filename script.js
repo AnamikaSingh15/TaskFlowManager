@@ -1,75 +1,59 @@
-const taskInput =
-document.getElementById("taskInput");
+const taskInput = document.getElementById("taskInput");
+const addBtn = document.getElementById("addBtn");
+const taskList = document.getElementById("taskList");
 
-const addBtn =
-document.getElementById("addBtn");
+addBtn.addEventListener("click", addTask);
 
-const taskList =
-document.getElementById("taskList");
+function addTask() {
 
-addBtn.addEventListener(
-"click",
-addTask
-);
+    const taskText = taskInput.value.trim();
 
-function addTask(){
+    if (taskText === "") {
+        alert("Please enter a task.");
+        return;
+    }
 
-const taskText =
-taskInput.value.trim();
+    const li = document.createElement("li");
 
-if(taskText === ""){
+    // Task Text
+    const span = document.createElement("span");
+    span.textContent = taskText;
 
-alert(
-"Please enter a task."
-);
+    // Complete Button
+    const completeBtn = document.createElement("button");
+    completeBtn.textContent = "Complete";
+    completeBtn.classList.add("complete-btn");
 
-return;
-}
+    completeBtn.addEventListener("click", function () {
 
-const li =
-document.createElement("li");
+        span.classList.toggle("completed");
 
-const span =
-document.createElement("span");
+        if (span.classList.contains("completed")) {
+            completeBtn.textContent = "Undo";
+        } else {
+            completeBtn.textContent = "Complete";
+        }
 
-span.textContent =
-taskText;
+    });
 
-span.addEventListener(
-"click",
-function(){
+    // Delete Button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("delete-btn");
 
-span.classList.toggle(
-"completed"
-);
+    deleteBtn.addEventListener("click", function () {
+        li.remove();
+    });
 
-}
-);
+    const buttonGroup = document.createElement("div");
 
-const deleteBtn =
-document.createElement("button");
+    buttonGroup.appendChild(completeBtn);
+    buttonGroup.appendChild(deleteBtn);
 
-deleteBtn.textContent =
-"Delete";
+    li.appendChild(span);
+    li.appendChild(buttonGroup);
 
-deleteBtn.classList.add(
-"delete-btn"
-);
+    taskList.appendChild(li);
 
-deleteBtn.addEventListener(
-"click",
-function(){
-
-li.remove();
-
-}
-);
-
-li.appendChild(span);
-
-li.appendChild(deleteBtn);
-
-taskList.appendChild(li);
-
-taskInput.value = "";
+    taskInput.value = "";
 }

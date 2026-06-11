@@ -51,25 +51,35 @@ list-style:none;
 }
 
 li{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:10px;
-margin-bottom:10px;
-background:#f1f5f9;
-border-radius:5px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px;
+    margin-bottom:10px;
+    background:#f1f5f9;
+    border-radius:5px;
 }
 
 .completed{
-text-decoration:line-through;
-color:gray;
+    text-decoration:line-through;
+    color:gray;
+}
+
+.complete-btn{
+    background:green;
+    color:white;
+    border:none;
+    padding:5px 10px;
+    margin-right:5px;
+    cursor:pointer;
+    border-radius:4px;
 }
 
 .delete-btn{
-background:red;
-color:white;
-border:none;
-padding:5px 10px;
-cursor:pointer;
-border-radius:4px;
+    background:red;
+    color:white;
+    border:none;
+    padding:5px 10px;
+    cursor:pointer;
+    border-radius:4px;
 }
